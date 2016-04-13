@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cmd="python openbazaard.py start -a 127.0.0.1"
 if [ -d "/root/.openbazaar" ]; then
     rm -rf /root/.openbazaar;
