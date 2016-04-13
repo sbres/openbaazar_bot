@@ -9,13 +9,18 @@ def follow(user, pwd, to_follow, host='127.0.01'):
         exit(-1)
     print 'Following {0}'.format(to_follow)
     connected = False
+    i = 0
     while not connected:
         try:
             bazaar = Openbazaar(user, pwd, host)
             connected = True
         except Exception:
+            i += 1
+            if i > 120:
+                print 'Open Bazaar crashed :('
+                exit (0);
             print 'Trying again'
-            time.sleep(1)
+            time.sleep(3)
             pass
     generator = Generate_Data()
     data = generator.create()
@@ -26,11 +31,11 @@ def follow(user, pwd, to_follow, host='127.0.01'):
                          bot['primary_color'],
                          bot['secondary_color'],
                          bot['background_color'])
-    for x in xrange(5):
+    for x in xrange(3):
         res = bazaar.follow(to_follow)
         if res.get('success') == True:
             break
-        time.sleep(1)
+        time.sleep(10)
     if res.get('success') == False:
         print 'Check the node to follow is on'
     else:
