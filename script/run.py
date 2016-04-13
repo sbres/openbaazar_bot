@@ -7,6 +7,7 @@ def follow(user, pwd, to_follow, host='127.0.01'):
     if len(to_follow) != 40:
         print 'To follow number guid is wrong'
         exit(-1)
+    print 'Following {0}'.format(to_follow)
     connected = False
     while not connected:
         try:
