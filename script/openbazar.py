@@ -14,7 +14,6 @@ class Openbazaar():
         res = r.json()
         if res.get('success', False) is False:
             print res.get('reason', "Authentification Error")
-            exit(0)
         self.guid = 42
         if self.get_profile() == {}:
             self.guid = None
@@ -39,7 +38,7 @@ class Openbazaar():
         r = self.s.get(followers_url, params=data)
         return r.json()
 
-    def set_profile(self, name, location, primary_color, secondary_color,background_color):
+    def set_profile(self, name, location, primary_color, secondary_color, background_color):
         followers_url = self.url + '/api/v1/profile'
         data = {'name': name,
                 'location': location,
@@ -50,21 +49,21 @@ class Openbazaar():
         r = self.s.post(followers_url, params=data)
         return r.json()
 
-    def set_profile_header(self, file):
-        followers_url = self.url + '/api/v1/profile'
-        with open(file, 'rb') as f:
-            content = f.read()
-        out = hexlify(content)
-
-        files = {'header': ('00001.jpg', out)}
-        r = self.s.post(followers_url, files=files)
-        return r.json()
+    # def set_profile_header(self, file):
+    #     followers_url = self.url + '/api/v1/profile'
+    #     with open(file, 'rb') as f:
+    #         content = f.read()
+    #     out = hexlify(content)
+    #
+    #     files = {'header': ('00001.jpg', out)}
+    #     r = self.s.post(followers_url, files=files)
+    #     return r.json()
 
     def follow(self, guid):
         followers_url = self.url + '/api/v1/follow'
         data = {'guid': guid}
         r = self.s.post(followers_url, data=data)
-        print r.text
+        return r.json()
 
 if __name__ == '__main__':
     user = 'sbres'
@@ -76,7 +75,4 @@ if __name__ == '__main__':
     host = '46.101.93.158'
     bazaar = Openbazaar(user, pwd, host)
 
-
-    print bazaar.set_profile_header('images/00001.jpg')
-    #print len(bazaar.get_followers()['followers'])
 
