@@ -10,4 +10,4 @@ sed -i "s|#PASSWORD = password|PASSWORD = get_followers69|g" ob.cfg;
 
 $cmd
 
-python run.py $GUID
+python script/run.py $GUID
