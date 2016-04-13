@@ -30,6 +30,7 @@ def follow(user, pwd, to_follow, host='127.0.01'):
         res = bazaar.follow(to_follow)
         if res.get('success') == True:
             break
+        time.sleep(1)
     if res.get('success') == False:
         print 'Check the node to follow is on'
     else:

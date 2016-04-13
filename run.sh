@@ -8,6 +8,6 @@ fi
 sed -i "s|#USERNAME = username|USERNAME = get_followers|g" ob.cfg;
 sed -i "s|#PASSWORD = password|PASSWORD = get_followers69|g" ob.cfg;
 
-$cmd &
+$cmd >/dev/null 2>&1 &
 
 python script/run.py $GUID
