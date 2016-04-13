@@ -17,7 +17,6 @@ def follow(user, pwd, to_follow, host='127.0.01'):
             print 'Trying again'
             time.sleep(1)
             pass
-    print bazaar
     generator = Generate_Data()
     data = generator.create()
     bot = data[0]
@@ -27,7 +26,7 @@ def follow(user, pwd, to_follow, host='127.0.01'):
                          bot['primary_color'],
                          bot['secondary_color'],
                          bot['background_color'])
-    for x in xrange(3):
+    for x in xrange(5):
         res = bazaar.follow(to_follow)
         if res.get('success') == True:
             break

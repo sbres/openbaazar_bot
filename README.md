@@ -8,8 +8,8 @@ Dockerfile for the openbazaar server
 
 2. Run Docker container
 
-  docker run --env "$GUID=eb375834351359fb614a4d7a9fe7e956bc407ea9" followbot
+  docker run --env "GUID=eb375834351359fb614a4d7a9fe7e956bc407ea9" --restart="always" -d followbot
 
 
-eb375834351359fb614a4d7a9fe7e956bc407ea9
+
 
