@@ -1,6 +1,7 @@
 from openbazar import Openbazaar
 from user import Generate_Data
 import sys
+import time
 
 def follow(user, pwd, to_follow, host='127.0.01'):
     if len(to_follow) != 40:
@@ -13,6 +14,7 @@ def follow(user, pwd, to_follow, host='127.0.01'):
             connected = True
         except Exception:
             print 'Trying again'
+            time.sleep(1)
             pass
     print bazaar
     generator = Generate_Data()
